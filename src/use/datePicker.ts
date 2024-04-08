@@ -104,6 +104,10 @@ export const propsDef = {
   timeAccuracy: { type: Number, default: 2 },
   isRequired: Boolean,
   isRange: Boolean,
+  closeOnSelect: {
+    type: Boolean,
+    default: true,
+  },
   updateOnInput: {
     type: Boolean,
     default: () => getDefault('datePicker.updateOnInput'),
@@ -651,7 +655,7 @@ export function createDatePicker(
     const opts: Partial<UpdateOptions> = {
       patch: 'date',
       formatInput: true,
-      hidePopover: true,
+      hidePopover: props.closeOnSelect,
     };
     if (isRange.value) {
       const dragging = !isDragging.value;
